@@ -63,8 +63,19 @@ PRODIGY_CS_05/
 │── README.md
 └── screenshots/
 ```
+## Screenshots
 
+### Packet Analysis Output
+![Packet Analysis](screenshots/packet_analysis_output.png)
 
+### Running the Program
+![Running Program](screenshots/running_program.png)
+
+### Source Code
+![Source Code](screenshots/source_code.png)
+
+### Additional Packet Analysis
+![Packet Analysis Continued](screenshots/packet_analysis_continued.png)
 
 ## Author
 
