@@ -1,61 +1,69 @@
-from scapy.all import rdpcap, IP, TCP, UDP, Raw
+# PRODIGY_CS_05
 
-PCAP_FILE = "sample_capture.pcap"
+# Network Packet Analyzer
 
+## Description
 
-def protocol_name(packet):
-    if TCP in packet:
-        return "TCP"
-    elif UDP in packet:
-        return "UDP"
-    else:
-        return "Other"
+This project is a Python-based Network Packet Analyzer developed as part of the Prodigy InfoTech Cybersecurity Internship.
 
+The application reads packets from a captured **.pcapng** file using the Scapy library and extracts useful network information such as source and destination IP addresses, protocols, packet length, ports, and payload previews.
 
-def analyze_packets():
-    try:
-        packets = rdpcap(PCAP_FILE)
+## Features
 
-        print("=" * 70)
-        print(f"Loaded {len(packets)} packets")
-        print("=" * 70)
+- Analyze packets from a PCAP/PCAPNG capture file
+- Display source and destination IP addresses
+- Identify TCP, UDP, and ICMP protocols
+- Display packet length
+- Display source and destination ports
+- Preview packet payload data
+- Simple command-line interface
 
-        for i, packet in enumerate(packets, start=1):
+## Technologies Used
 
-            if IP in packet:
-                print(f"\nPacket #{i}")
-                print("-" * 50)
+- Python 3
+- Scapy
 
-                print(f"Source IP      : {packet[IP].src}")
-                print(f"Destination IP : {packet[IP].dst}")
-                print(f"Protocol       : {protocol_name(packet)}")
-                print(f"Packet Length  : {len(packet)} bytes")
+## Installation
 
-                if TCP in packet:
-                    print(f"Source Port    : {packet[TCP].sport}")
-                    print(f"Destination Port: {packet[TCP].dport}")
+Install Scapy:
 
-                elif UDP in packet:
-                    print(f"Source Port    : {packet[UDP].sport}")
-                    print(f"Destination Port: {packet[UDP].dport}")
+```bash
+pip install scapy
+```
 
-                if Raw in packet:
-                    payload = bytes(packet[Raw].load)
+## Usage
 
-                    try:
-                        preview = payload.decode(errors="ignore")
-                    except Exception:
-                        preview = str(payload)
+Run the program:
 
-                    print(f"Payload Preview: {preview[:80]}")
+```bash
+python main.py
+```
 
-                print("-" * 50)
+Ensure that the packet capture file (`sample_capture.pcapng`) is located in the project directory before running the application.
 
-    except FileNotFoundError:
-        print("sample_capture.pcap was not found.")
-    except Exception as e:
-        print(f"Error: {e}")
+## Sample Output
 
+The analyzer displays:
 
-if __name__ == "__main__":
-    analyze_packets()
+- Source IP Address
+- Destination IP Address
+- Network Protocol
+- Packet Length
+- Source Port
+- Destination Port
+- Payload Preview
+
+## Project Structure
+
+```
+PRODIGY_CS_05/
+│── main.py
+│── sample_capture.pcapng
+│── requirements.txt
+│── README.md
+└── screenshots/
+```
+
+## Author
+
+Doreen James
