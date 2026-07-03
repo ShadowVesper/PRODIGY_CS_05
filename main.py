@@ -54,7 +54,7 @@ def analyze_packets():
                 print("-" * 50)
 
     except FileNotFoundError:
-        print("sample_capture.pcap was not found.")
+        print("sample_capture.pcapng was not found.")
     except Exception as e:
         print(f"Error: {e}")
 
